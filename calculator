@@ -1,0 +1,36 @@
+#include <iostream>
+
+int main()
+{
+    using namespace std;
+    int x{},y{},x_s{0},y_s{0},x_mn{1},y_mn{1};
+    int x_sys{}, y_sys{}, z_sys{};
+    cout << "";
+    cin >> x >> y; // вводим 2 числа в любых системах счисления;
+    cin >> x_sys{} >> y_sys{} >> z_sys{}; // выбираем системы счисления для 1-го, 2-го чисел и в какую хотим преобразовать;
+    while (x>0)
+    {
+        x_s+=x%10*x_mn;
+        x/=10;
+        x_mn*=x_sys;
+    }    
+    while (y>0)
+    {
+        y_s+=y%10*y_mn;
+        y/=10;
+        y_mn*=y_sys;
+    }    
+    x=x_s+y_s;
+    y=z_sys;
+    while (x>=y)
+        y*=z_sys;
+    y/=z_sys;
+    cout << x_s << " + "<< y_s << " = " << x << '\n';
+    while (y>=1)
+    {    
+        cout << x/y;
+        x%=y;
+        y/=z_sys;
+    }      
+    return 0;
+ }
